@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="mt-20">
-            <div class="2xl:container m-auto ">
+            <div class="container m-auto ">
                 <div class="h-screen bg-white w-full  rounded-lg overflow-auto">
                     <div class="w-full h-10 text-lg">
                         <!-- <div class="border border-black h-full"></div> -->
