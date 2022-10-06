@@ -1,8 +1,9 @@
 <template>
   <div class="font-sans antialiased" id="app">
     <div class="relative">
-      <Header/>
-      <div class="w-full rounded-b-xl h-auto ">
+        <Header />
+        
+        <div class="w-full rounded-b-xl h-auto ">
         <div class="flex justify-center items-center">
           <img src="../assets/Images/Home/pnl2.png" class="w-full rounded-b-[20px]" alt="">
           <div class="absolute text-2xl flex flex-col justify-center items-center text-white top-auto ">
@@ -34,7 +35,7 @@
           <img src="../assets/Images/Home/illus.png" alt="">
         </div>
         <div class="flex flex-col w-1/2">
-          <div class="font-extrabold text-2xl">TENTANG KAMI</div>
+          <div class="font-extrabold text-2xl">TENTANG KAMI Dokumen</div>
           <div class="flex flex-row w-full mt-5">
             <div class="flex items-center">
               <img src="../assets/Images/Home/icon_red.png" alt="">
@@ -75,7 +76,11 @@
             </div>
           </div>
         </div>
+
       </div>
+
+
+
     </div>
     <!-- video -->
     <div class="w-full">
@@ -212,10 +217,9 @@
     </div>
   </div>
 </template>
-
 <script>
-  import Header from '../components/Header.vue';
-  export default {
+import Header from '../components/Header.vue';
+export default {
     data() {
       return {
         open: false,
@@ -229,5 +233,5 @@
         this.open = !this.open
       }
     }
-  }
+}
 </script>

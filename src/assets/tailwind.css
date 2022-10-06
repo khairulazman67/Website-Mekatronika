@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 
+
 @font-face {
-    font-family: "Nunito";
-    src: url("./font/Nunito/Nunito-VariableFont_wght.ttf") format('truetype');
-  }
+  font-family: "Nunito";
+  src: url("./font/Nunito/Nunito-VariableFont_wght.ttf") format('truetype');
+}
+
+.btn-primary{
+  @apply w-1/6 border-2 border-gray-200 h-full font-bold text-black hover:bg-primary-800 hover:text-white focus:outline-none rounded-lg
+}
