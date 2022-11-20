@@ -2,13 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-@font-face {
+/* @font-face {
   font-family: "Nunito";
-  src: url("./font/Nunito/Nunito-VariableFont_wght.ttf") format('truetype');
-}
+  src: url("./font/Nunito/static/Nunito-Light.ttf") format('truetype');
+} */
 
+.btn{
+  @apply w-1/4 border-2 border-gray-200 h-full font-bold text-black hover:bg-primary-800 hover:text-white focus:outline-none rounded-lg
+}
 .btn-primary{
-  @apply w-1/6 border-2 border-gray-200 h-full font-bold text-black hover:bg-primary-800 hover:text-white focus:outline-none rounded-lg
+  @apply w-1/4 border-2 bg-primary-800  border-gray-200 h-full font-bold text-white hover:bg-primary-700  focus:outline-none rounded-lg
 }

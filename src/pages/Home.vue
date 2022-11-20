@@ -1,28 +1,57 @@
 <template>
   <div class="font-sans antialiased" id="app">
     <div class="relative">
-      <Header/>
+      <Header />
       <div class="w-full rounded-b-xl h-auto ">
         <div class="flex justify-center items-center">
           <img src="../assets/Images/Home/pnl2.png" class="w-full rounded-b-[20px]" alt="">
           <div class="absolute text-2xl flex flex-col justify-center items-center text-white top-auto ">
             <!-- <div class=""> -->
-            <div class="font-extrabold text-6xl">Politeknik Negeri Lhokseumawe</div>
-            <div class="font-extrabold text-7xl mt-3">Teknologi Rekayasa Mekatronika</div>
-            <div class="py-3 px-4 mt-4 rounded-2xl font-extrabold text-black bg-yellow-900 hover:bg-yellow-800">
+            <div class="font-bold text-6xl">Program Studi</div>
+            <div class="font-bold text-7xl mt-3">Teknologi Rekayasa Mekatronika</div>
+            <div class="py-3 px-4 mt-4 rounded-2xl font-semibold text-black bg-yellow-900 hover:bg-yellow-800">
               Selengkapnya...</div>
             <!-- </div> -->
           </div>
 
           <div class="absolute flex flex-row gap-7 justify-center -bottom-32">
-            <img src="../assets/Images/Home/card_red.png" alt="">
-            <img src="../assets/Images/Home/card_green.png" alt="">
-            <img src="../assets/Images/Home/card_yellow.png" alt="">
-            <img src="../assets/Images/Home/card_red.png" alt="">
-            <!-- <div class="h-32 w-32 bg-primary-700 rounded-2xl"></div>
-            <div class="h-32 w-32 bg-primary-700 rounded-2xl"></div>
-            <div class="h-32 w-32 bg-primary-700 rounded-2xl"></div>
-            <div class="h-32 w-32 bg-primary-700 rounded-2xl"></div> -->
+            <!-- <div class="relative">
+              <img src="../assets/Images/Home/card_red.png" alt="">
+              <div class="absolute text-2xl flex flex-col justify-center items-center">
+                dsakjd,nas
+              </div>
+            </div> -->
+            <div class="relative flex justify-center items-center ">
+              <img src="../assets/Images/Home/card_red.png" class="w-full rounded-xl" alt="">
+              <div class="absolute m-6 text-2xl flex flex-col text-primary-800  hover:text-primary-700 justify-center items-center top-auto ">
+                <i class="fa-solid fa-building-columns text-8xl"></i>
+                <div class="font-bold text-2xl text-center  mt-6">Tentang Prodi</div>
+              </div>
+            </div>
+
+            <div class="relative flex justify-center items-center ">
+              <img src="../assets/Images/Home/card_green.png" class="w-full rounded-xl" alt="">
+              <div class="absolute m-6 text-2xl flex flex-col text-secondary-900  hover:text-secondary-800 justify-center items-center top-auto ">
+                <i class="fa-solid fa-book-open-reader text-8xl"></i>
+                <div class="font-bold text-2xl text-center  mt-6">Visi dan Misi</div>
+              </div>
+            </div>
+            
+            <div class="relative flex justify-center items-center ">
+              <img src="../assets/Images/Home/card_yellow.png" class="w-full rounded-xl" alt="">
+              <div class="absolute m-6 text-2xl flex flex-col text-yellow-900  hover:text-yellow-800 justify-center items-center top-auto ">
+                <i class="fa-solid fa-person-chalkboard text-8xl"></i>
+                <div class="font-bold text-2xl text-center  mt-6">Dosen</div>
+              </div>
+            </div>
+            
+            <div class="relative flex justify-center items-center ">
+              <img src="../assets/Images/Home/card_red.png" class="w-full rounded-xl" alt="">
+              <div class="absolute m-6 text-2xl flex flex-col text-primary-800  hover:text-primary-700 justify-center items-center top-auto ">
+                <i class="fa-solid fa-graduation-cap text-8xl"></i>
+                <div class="font-bold text-2xl text-center  mt-6">CPL</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -86,9 +115,9 @@
         <!-- lasted post -->
 
         <div class="flex flex-row w-full h-auto gap-8 ">
-          <div class="w-1/2 h-full bg-yellow-100 rounded-xl shadow-xl shadow-gray-900 outline-1">
+          <div class="w-1/2 h-full bg-gray-300 rounded-xl shadow-xl shadow-gray-900 outline-1">
             <div class="flex flex-col p-5 gap-5">
-              <div class="p-3 text-primary-800 bg-white rounded-xl font-semibold text-center text-xl ">BERITA TERBARU
+              <div class="p-3 text-primary-800 bg-white rounded-xl font-bold text-center text-xl ">BERITA TERBARU
               </div>
               <div class="h-2 w-full rounded-xl bg-primary-800 "></div>
 
@@ -105,44 +134,44 @@
                 </div>
               </div>
               <div class="flex flex-row gap-5">
-                
+
                 <div class="w-full rounded-xl h-auto ">
                   <div class="relative  flex justify-center items-center">
-                    <img src="../assets/Images/Home/pnl4.png" class="w-full rounded-xl" alt="">
-                    <!-- <div class="w-full" style="background-image:url(./pnl2.png)">
-
-                    </div> -->
+                    <div class="w-full bg-black rounded-xl">
+                      <img src="../assets/Images/Home/pnl4.png" class="w-full rounded-xl opacity-50" alt="">
+                    </div>
                     <div class="absolute m-6 text-2xl flex flex-col justify-center items-center text-white top-auto ">
                       <!-- <div class=""> -->
-                      <div class="font-extrabold text-xl text-center">Lorem Ibsum</div>
-                      <div class="font-extrabold text-lg text-center mt-3 ">
-                        Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+                      <div class="font-extrabold text-xl text-center hover:text-gray-300">Lorem Ibsum</div>
+                      <div class=" text-lg text-center mt-3 ">
+                        Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s, when an unknown
                       </div>
                       <!-- </div> -->
                     </div>
-                    
+
                   </div>
                 </div>
                 <div class="w-full rounded-xl h-auto ">
                   <div class="relative  flex justify-center items-center">
-                    <img src="../assets/Images/Home/pnl4.png" class="w-full rounded-xl" alt="">
-                    <!-- <div class="w-full" style="background-image:url(./pnl2.png)">
-
-                    </div> -->
+                    <div class="w-full bg-black rounded-xl">
+                      <img src="../assets/Images/Home/pnl4.png" class="w-full rounded-xl opacity-50" alt="">
+                    </div>
                     <div class="absolute m-6 text-2xl flex flex-col justify-center items-center text-white top-auto ">
                       <!-- <div class=""> -->
-                      <div class="font-extrabold text-xl text-center">Lorem Ibsum</div>
-                      <div class="font-extrabold text-lg text-center mt-3 ">
-                        Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+                      <div class="font-extrabold text-xl text-center hover:text-gray-300">Lorem Ibsum</div>
+                      <div class=" text-lg text-center mt-3 ">
+                        Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s, when an unknown
                       </div>
                       <!-- </div> -->
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
               <div class="flex flex-row shadow-lg rounded-xl bg-white">
-                
+
                 <div class="w-3/5 flex flex-col p-6">
                   <p class="font-black text-xl mb-2">Lorem Ibsum</p>
                   <p class="text-justify">Nostrud esse veniam consectetur cillum commodo. Ullamco ex elit dolor commodo
@@ -203,18 +232,14 @@
           </div>
         </div>
       </div>
-      <!-- footer -->
-      <div class="bg-yellow-900 mt-10 h-24 w-full flex justify-center items-center">
-        <div class="font-bold text-lg text-white">
-          © 2022 - Prodi Teknologi Rekayasa Multimedia
-        </div>
-      </div>
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
   import Header from '../components/Header.vue';
+  import Footer from '../components/Footer.vue';
   export default {
     data() {
       return {
@@ -222,7 +247,8 @@
       }
     },
     components: {
-        Header,
+      Header,
+      Footer
     },
     methods: {
       toggle() {

@@ -24,9 +24,6 @@ module.exports = {
           600 : '#FCF1D8'
         }
       },
-      fontFamily: {
-        sans: ["Nunito"],
-      }
     },
   },
   plugins: [],
