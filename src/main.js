@@ -7,6 +7,8 @@ import '@fortawesome/fontawesome-free/js/all.js'
 
 import router from './router'
 
+// App
+
 createApp(App)
     .use(router)
     .mount('#app')
