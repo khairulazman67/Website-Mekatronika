@@ -20,15 +20,15 @@
                 </div>
                 <div :class="open ? 'block': 'hidden'" class="w-full flex-grow  sm:flex sm:items-center sm:w-auto">
                     <div class="sm:flex-grow text-xl uppercase text-white">
-                        <router-link :to="{name:'Home', params:{}}"
+                        <router-link :to="{name:'home', params:{}}"
                             class="no-underline px-2 font-extrabold  block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-yellow-700 mr-4">
                             Beranda
                         </router-link>
-                        <router-link :to="{name:'Profil', params:{}}"
+                        <router-link :to="{name:'profil', params:{}}"
                             class="no-underline px-2 font-extrabold  block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-yellow-700 mr-4">
                             Profil
                         </router-link>
-                        <router-link :to="{name:'Dokumen', params:{}}"
+                        <router-link :to="{name:'dokumen', params:{}}"
                             class="no-underline px-2 font-extrabold  block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-yellow-700 mr-4">
                             Dokumen
                         </router-link>
