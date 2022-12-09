@@ -1,5 +1,4 @@
 <template>
-
     <div class="h-screen py-5 px-5 ">
         <div class="flex h-full flex-row ">
             <aside :class="showMenu ? 'flex' : 'hidden mx-0'"
@@ -12,7 +11,7 @@
                         <button @click="toggleNav()">
                             <i class="fa-solid fa-bars"></i>
                         </button>
-                        <div class="ml-3 ">Kategori</div>
+                        <div class="ml-3 ">Kategori </div>
                     </div>
                 </div>
                 <div
@@ -30,7 +29,7 @@
                                             class="w-full bg-primary-800 rounded-2xl py-3 px-7 text-white text-lg font-semibold xs:text-center">
                                             Form Kategori</div>
                                         <div>
-                                            <form action="" class="mt-4">
+                                            <form action="" @submit.prevent="addOrrUpdate" class="mt-4">
                                                 <div class="mb-4">
                                                     <label
                                                         class="block text-gray-700 text-lg font-bold mb-2 xs:text-base"
@@ -39,7 +38,7 @@
                                                     </label>
                                                     <input
                                                         class="shadow h-12 text-xs rounded-2xl appearance-none border w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
-                                                        type="text" placeholder="Kategori">
+                                                        type="text" v-model="kategori" name="kategori" placeholder="Kategori">
                                                 </div>
                                                 <div class="mb-6">
                                                     <label
@@ -49,12 +48,11 @@
                                                     </label>
                                                     <input
                                                         class="shadow h-12 text-xs rounded-2xl appearance-none border w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
-                                                        type="text" placeholder="Keterangan">
+                                                        type="text" v-model="keterangan" name="keterangan" placeholder="Keterangan">
                                                 </div>
 
                                                 <div class="flex flex-row justify-end">
-                                                    <!-- <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-5 rounded-xl">Batal</button> -->
-                                                    <button
+                                                    <button type="submit"
                                                         class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-5 rounded-xl ml-2">Simpan</button>
                                                 </div>
                                             </form>
@@ -153,22 +151,28 @@
 
 <script>
     import Sidebar from '../../components/Sidebar.vue'
+    import {reactive, toRefs} from 'vue'
+    // import axios from 'axios'
     export default {
         components: {
             Sidebar
         },
-        data() {
-            return {
-                showMenu: true,
+        setup(){
+            const toggle =  reactive({
+                showMenu : true,
+            });   
+            const toggleNav = ()=>{
+                toggle.showMenu = toggle.showMenu === false ? true : false
+            } 
+            const form = reactive({
+                kategori : '',
+                keterangan : '',
+            })
+            const addOrrUpdate =()=>{
+                console.log('kategori',form.kategori)
+                console.log('keterangan',form.keterangan)
             }
+            return {...toRefs(toggle), toggleNav, ...toRefs(form), addOrrUpdate}
         },
-        methods: {
-            toggleNav() {
-                this.showMenu = this.showMenu === false ? true : false
-            },
-        },
-        mounted() {
-
-        }
     }
 </script>
