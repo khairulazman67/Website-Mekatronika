@@ -60,7 +60,7 @@
                         <button @click="toggleNav()">
                             <i class="fa-solid fa-bars"></i>
                         </button>
-                        <div class="ml-3 ">Kategori </div>
+                        <div class="ml-3 ">Survei </div>
                     </div>
                 </div>
                 <div

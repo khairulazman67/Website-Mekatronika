@@ -32,6 +32,7 @@
                 </div>
             </div>
         </router-link>
+        <router-link :to="{name: 'survei', params:{}}" class="mt-4">
         <div class="mt-4">
             <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
                 <div
@@ -41,6 +42,7 @@
                 <div class="text-white text-base xs:text-xs mt-1">Survei</div>
             </div>
         </div>
+         </router-link>
         <div class="mt-4">
             <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
                 <div

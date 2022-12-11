@@ -101,7 +101,7 @@ export default {
         },
         getData(){
             axios
-                .get(`http://localhost:3000/surveys`)
+                .get(`surveys`)
                 .then(r => {
                     console.log(r);
                 }).catch(e => {

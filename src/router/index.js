@@ -5,7 +5,8 @@ import Profil from '../pages/Profil';
 import Login from '../pages/Login';
 import DashboardAdmin from '../pages/admin/Dashboard';
 import Posting from '../pages/admin/Posting';
-import Kategori from '../pages/admin/Kategori'
+import Kategori from '../pages/admin/Kategori';
+import Survei from '../pages/admin/Survei'
 
 
 const router = createRouter({
@@ -45,6 +46,11 @@ const router = createRouter({
             path: '/kategori',
             name: 'kategori',
             component: Kategori,
+        },
+        {
+            path: '/survei',
+            name: 'survei',
+            component: Survei,
         }
     ]
 })
