@@ -4,7 +4,8 @@ import Dokumen from '../pages/Dokumen';
 import Profil from '../pages/Profil';
 import Login from '../pages/Login';
 import DashboardAdmin from '../pages/admin/Dashboard';
-import Posting from '../pages/admin/Posting';
+import FormPosting from '../pages/admin/article/Form';
+import DataPosting from '../pages/admin/article/Index';
 import Kategori from '../pages/admin/Kategori';
 import Survei from '../pages/admin/Survei'
 
@@ -38,9 +39,16 @@ const router = createRouter({
             component: DashboardAdmin,
         },
         {
-            path: '/posting',
-            name: 'posting',
-            component: Posting,
+            path : '/dataposting',
+            name :'dataposting',
+            props : true,
+            component :DataPosting,
+        },
+        {
+            path: '/formposting/:id',
+            name: 'formposting',
+            props:true,
+            component: FormPosting,
         },
         {
             path: '/kategori',

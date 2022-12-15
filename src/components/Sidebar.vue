@@ -10,7 +10,7 @@
                 <div class="text-white text-base xs:text-xs mt-1">Beranda</div>
             </div>
         </router-link>
-        <router-link :to="{name: 'posting', params:{}}">
+        <router-link :to="{name: 'dataposting', params:{}}">
             <div class="mt-4">
                 <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
                     <div

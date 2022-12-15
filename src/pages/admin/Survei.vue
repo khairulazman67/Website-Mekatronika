@@ -18,12 +18,12 @@
                                 <label
                                     class="block text-gray-700 text-lg font-bold mb-2 xs:text-base"
                                     for="username">
-                                    Kategori :
+                                    judul :
                                 </label>
                                 <input
                                     class="shadow h-12 text-xs rounded-2xl appearance-none border w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
-                                    type="text" v-model="kategori" name="kategori"
-                                    placeholder="Kategori">
+                                    type="text" v-model="judul" name="judul"
+                                    placeholder="judul">
                             </div>
                             <div class="mb-6">
                                 <label
@@ -76,19 +76,19 @@
                                         class="flex flex-col bg-gray-100 rounded-2xl w-1/2 mx-5 my-5 px-5 py-5 xs:mx-3 xs:my-3 xs:py-3 gap-4">
                                         <div
                                             class="w-full bg-primary-800 rounded-2xl py-3 px-7 text-white text-lg font-semibold xs:text-center">
-                                            Form Kategori</div>
+                                            Form Survei</div>
                                         <div>
                                             <form action="" @submit.prevent="addOrUpdate(1)" class="mt-4">
                                                 <div class="mb-4">
                                                     <label
                                                         class="block text-gray-700 text-lg font-bold mb-2 xs:text-base"
                                                         for="username">
-                                                        Kategori :
+                                                        judul :
                                                     </label>
                                                     <input
                                                         class="shadow h-12 text-xs rounded-2xl appearance-none border w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
-                                                        type="text" v-model="kategori" name="kategori"
-                                                        placeholder="Kategori">
+                                                        type="text" v-model="judul" name="judul"
+                                                        placeholder="judul">
                                                 </div>
                                                 <div class="mb-6">
                                                     <label
@@ -114,7 +114,7 @@
                                         <div class="py-1 ">
                                             <div
                                                 class="w-full bg-primary-800 rounded-2xl py-3 px-7 text-white text-lg font-semibold xs:text-center">
-                                                Data Kategori
+                                                Data judul
                                             </div>
                                             <div class="mt-3">
                                                 <div class="overflow-x-auto ">
@@ -127,7 +127,7 @@
                                                                     No
                                                                 </th>
                                                                 <th scope="col" class="py-3 px-6">
-                                                                    Kategori
+                                                                    judul
                                                                 </th>
                                                                 <th scope="col" class="py-3 px-6">
                                                                     Keterangan
@@ -138,21 +138,21 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr v-for="(v,i) in dataKategori" :key="i"
+                                                            <tr v-for="(v,i) in datajudul" :key="i"
                                                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                                 <th scope="row"
                                                                     class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                                     {{i+1}}
                                                                 </th>
                                                                 <td class="py-4 px-6">
-                                                                    {{v.kategori}}
+                                                                    {{v.judul}}
                                                                 </td>
                                                                 <td class="py-4 px-6">
                                                                     {{v.keterangan}}
                                                                 </td>
                                                                 <td class="py-4 px-6">
                                                                     <div class="flex flex-row justify-center">
-                                                                        <button type="submit" @click="editData(v.kategori, v.keterangan, v.id)" 
+                                                                        <button type="submit" @click="editData(v.judul, v.keterangan, v.id)" 
                                                                             class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-1 px-5 rounded-xl ml-2"><i
                                                                                 class="fa-solid fa-pen-to-square"></i></button>
 
@@ -198,14 +198,14 @@
                 isOpen: false
             });
             const data = reactive({
-                dataKategori: [],
+                datajudul: [],
             })
-            //get data kategori
+            //get data judul
             const getCategoriesData = async () => {
                 await axios.get(`categories`)
                     .then(r => {
-                        data.dataKategori = r.data.data;
-                        console.log(data.dataKategori);
+                        data.datajudul = r.data.data;
+                        console.log(data.datajudul);
                     })
                     .catch(e => {
                         console.dir(e);
@@ -220,16 +220,16 @@
             }
 
 
-            //form kategori
+            //form judul
             const form = reactive({
-                kategori: '',
+                judul: '',
                 keterangan: '',
                 id :null
             })
 
             const addOrUpdate = (flag) => {
                 const data = {
-                    'kategori': form.kategori,
+                    'judul': form.judul,
                     'keterangan': form.keterangan
                 }
                 console.log('data', data)
@@ -244,7 +244,7 @@
                                     'success'
                                 )
                                 getCategoriesData()
-                                form.kategori = null
+                                form.judul = null
                                 form.keterangan = null
                             }
                         })
@@ -267,7 +267,7 @@
                                     'success'
                                 )
                                 getCategoriesData()
-                                form.kategori = null
+                                form.judul = null
                                 form.keterangan = null
                             }
                         })
@@ -318,8 +318,8 @@
                 })
             }
 
-            const editData = (kategori, keterangan,id) =>{
-                form.kategori = kategori
+            const editData = (judul, keterangan,id) =>{
+                form.judul = judul
                 form.keterangan = keterangan
                 form.id = id
                 toggle.isOpen = true

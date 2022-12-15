@@ -18,14 +18,15 @@
                     <div class="flex flex-col  w-full xs:w-full rounded-t-3xl">
                         <div class="flex flex-col">
                             <div>
-                                <div class="bg-primary-800 rounded-t-2xl px-10 text-center w-full text-white py-3 font-semibold text-2xl xs:text-lg">JADWAL PEMBERIAN PAKAN</div>
+                                <div class="bg-primary-800 rounded-t-2xl px-10 text-center w-full text-white py-3 font-semibold text-2xl xs:text-lg">POSTINGAN</div>
                                 <div class=" bg-white rounded-b-3xl shadow-lg py-2">
                                     <div class="bg-secondary-800 rounded-2xl  mx-5 my-5 px-5 py-5 xs:mx-3 xs:my-3 xs:py-3 gap-4">
-                                        <div class="w-full bg-primary-800 rounded-2xl py-3 px-7 text-white text-lg font-semibold xs:text-center">Form Pemberian Pakan</div>
+                                        <div class="w-full bg-primary-800 rounded-2xl py-3 px-7 text-white text-lg font-semibold xs:text-center">Tambahkan Postingan</div>
                                         <div class="w-full bg-white rounded-3xl mt-5 p-5">
                                             <!-- <QuillEditor theme="snow"/> -->
-                                            <QuillEditor theme="snow" toolbar="#my-toolbar">
-                                                <template #toolbar>
+                                            <QuillEditor v-model="content"  :options="editorOption" toolbar="#my-toolbar" ref="myQuillEditor" >
+                                             <!-- <QuillEditor v-model:content="content" theme="snow" toolbar="#custom-toolbar"> -->
+                                                <template #toolbar >
                                                     <div id="my-toolbar">
                                                         <!-- Add buttons as you would before -->
                                                         <select class="ql-size">
@@ -63,10 +64,10 @@
                                                         <button class="ql-image"></button>
 
                                                         <!-- But you can also add your own -->
-                                                        <button id="custom-button" >Save</button>
                                                     </div>
                                                 </template>
                                             </QuillEditor>
+                                             <button @click="getContent" style="text-white bg-primary-600" >Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +93,29 @@ export default {
     data() {
         return {
             showMenu : true,
-            data :0
+            data :0,
+            content :{"ops":[{"insert":"Lorem ipsum dolor sit amet"},{"attributes":{"header":3},"insert":"\n"},{"insert":"consectetur adipiscing elit. "},{"attributes":{"bold":true},"insert":"Nunc ultrices ligula"},{"insert":" eu eros pulvinar, eu consequat nulla consectetur. Cras ut purus felis. Nunc placerat risus a augue sodales, at ultricies diam tristique. Donec venenatis auctor mauris,"},{"attributes":{"italic":true},"insert":" at molestie enim euismo"},{"insert":"d ac. Mauris viverra, leo id porttitor maximus, diam magna blandit nibh, ac vehicula nulla diam in eros. Nullam mi risus, blandit a elit quis, aliquam porttitor diam. In mauris nunc, fringilla at auctor in, sodales eu diam. In convallis gravida urna, ut gravida massa euismod quis.\nProin rutrum tortor at augue eleifend finibus. "},{"attributes":{"underline":true},"insert":"Quisque non tincidunt dolor."},{"insert":" Aenean ullamcorper, diam ac vehicula imperdiet, arcu erat sodales sem, vitae lobortis dolor urna dapibus nisi. Nulla lacus urna, vehicula quis rutrum sit amet, "},{"attributes":{"link":"http://localhost"},"insert":"porttitor eget ligula"},{"insert":". Nam eget ante ornare, egestas nulla dapibus, tempus nisi. Sed vel odio augue. Fusce vulputate, risus sit amet venenatis tristique, ex ex pulvinar orci, vitae lobortis massa enim ac ante. Nulla sodales mauris ligula, a tempus felis vulputate ut. Sed scelerisque dolor at leo hendrerit vehicula.\n"}]},
+            editorOption: {
+                debug: 'info',
+                placeholder: 'Type your post...',
+                readOnly: false,
+                theme: 'snow'
+            },
+            delta: undefined,
+            postCategories: [
+                {
+                    id: 1,
+                    label:'NodeJS',
+                    img:'https://pluralsight.imgix.net/paths/path-icons/nodejs-601628d09d.png?w=200'
+                },
+                {
+                    id: 2,
+                    label:'JavaScript',
+                    img:'https://cdn.auth0.com/blog/js-fatigue/JSLogo.png'
+                }
+            ],
+            showImageModal: false,
+            formEntered: false
         }
     },
     methods: {
@@ -107,8 +130,17 @@ export default {
                 }).catch(e => {
                     console.dir(e);
                 });
+        },
+        getContent(){
+            console.log('ini konten', this.content);
         }
+
     },
+    watch: {
+		content () {
+            console.log(this.content)
+		}
+	},
     mounted(){
         this.getData()
     }
