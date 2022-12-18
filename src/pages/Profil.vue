@@ -21,27 +21,27 @@
                     <div class="w-full h-14 text-lg  flex flex-rowu">
                         <!-- <div class="border border-black h-full"></div> -->
                         <div class="w-1/2">
-                            <button :class="state.flag==='tentang' ?'btn-primary' : 'btn'" @click="changeMenu('tentang')">Tentang</button>
-                            <button :class="state.flag==='visimisi'?'btn-primary' : 'btn'" @click="changeMenu('visimisi')">Visi Misi</button>
-                            <button :class="state.flag==='tujuan' ?'btn-primary' : 'btn'" @click="changeMenu('tujuan')">Tujuan</button>
-                            <button :class="state.flag==='SK' ?'btn-primary' : 'btn'" @click="changeMenu('SK')">SK</button>
+                            <button :class="data.flag===1 ?'btn-primary' : 'btn'" @click="changeMenu(1)">Tentang</button>
+                            <button :class="data.flag===2?'btn-primary' : 'btn'" @click="changeMenu(2)">Visi Misi</button>
+                            <button :class="data.flag===3 ?'btn-primary' : 'btn'" @click="changeMenu(3)">Tujuan</button>
+                            <button :class="data.flag===4 ?'btn-primary' : 'btn'" @click="changeMenu(3)">SK</button>
                         </div>
                         <div class="w-1/2">
-                            <button :class="state.flag==='kurikulum' ?'btn-primary' : 'btn'" @click="changeMenu('kurikulum')">Kurikulum</button>
-                            <button :class="state.flag==='CPL' ?'btn-primary' : 'btn'" @click="changeMenu('CPL')">CPL</button>
-                            <button :class="state.flag==='dosen' ?'btn-primary' : 'btn'" @click="changeMenu('dosen')">Dosen</button>
-                            <button :class="state.flag==='mhs' ?'btn-primary' : 'btn'" @click="changeMenu('mhs')">Mahasiswa</button>
+                            <button :class="data.flag===5 ?'btn-primary' : 'btn'" @click="changeMenu(5)">Kurikulum</button>
+                            <button :class="data.flag===6 ?'btn-primary' : 'btn'" @click="changeMenu(6)">CPL</button>
+                            <button :class="data.flag===7 ?'btn-primary' : 'btn'" @click="changeMenu(7)">Dosen</button>
+                            <button :class="data.flag===8 ?'btn-primary' : 'btn'" @click="changeMenu(8)">Mahasiswa</button>
                         </div>
                     </div>
                     <div class="p-10">
-                        <Tentang v-if="state.flag==='tentang'"/>
-                        <Visimisi v-if="state.flag==='visimisi'"/>
-                        <Tujuan v-if="state.flag==='tujuan'"/>
-                        <SK v-if="state.flag==='SK'"/>
-                        <Kurikulum v-if="state.flag==='kurikulum'"/>
-                        <CPL v-if="state.flag==='CPL'"/>
-                        <Dosen v-if="state.flag==='Dosen'"/>
-                        <Mhs v-if="state.flag==='mhs'"/>
+                        <Tentang v-if="data.flag===1"/>
+                        <Visimisi v-if="data.flag===2"/>
+                        <Tujuan v-if="data.flag===3"/>
+                        <SK v-if="data.flag===4"/>
+                        <Kurikulum v-if="data.flag===5"/>
+                        <CPL v-if="data.flag===6"/>
+                        <Dosen v-if="data.flag===7"/>
+                        <Mhs v-if="data.flag===8"/>
                     </div>
                 </div>
             </div>
@@ -60,18 +60,34 @@
     import CPL from '../components/Profil/CPL.vue'
     import Dosen from '../components/Profil/Dosen.vue'
     import Mhs from '../components/Profil/Mhs.vue'
-    import {reactive} from 'vue'
+    import axios from 'axios'
+    import {reactive, onMounted} from 'vue'
     export default {
         setup(){
-            let state = reactive({
-                flag:'visimisi'})
+            let data = reactive({
+                flag : null,
+                isloaded :false
+            })
             
-            const changeMenu= (data) =>{
-                state.flag = data
-                console.log('ini flag',state.flag)
+            
+            const changeMenu= async(id) =>{
+                
+                data.flag = id
+                console.log('ini flag bro',data.flag)
+                const content = await getContent(data.flag)
+                console.log('ini konten bro',content)
             }
+            
+            const getContent=async(id) =>{
+                return await axios.get(`contents/categories/${id}`)
+            }
+            onMounted(async () => {
+                await changeMenu(1)
+                data.isloaded=true
+                
+            })  
 
-            return {state, changeMenu}
+            return {data, changeMenu}
         },
 
         components: {

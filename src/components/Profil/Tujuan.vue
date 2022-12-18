@@ -1,25 +1,71 @@
 <template>
-    <div class="w-full">
-        <div class="font-semibold text-2xl">Tujuan Prodi TRM</div>
-        <div class="font-semibold text-lg mt-4">Tujuan Pendidikan Program Studi / Program Educational Objective (PEO)</div>
-        <textarea name="" id="" cols="30" rows="15" class="w-full">
-PEO1 - Lulusan menerapkan kemampuan untuk menggunakan pengetahuan dan keterampilannya dalam praktek rekayasa multimedia yang berakhlak mulia, berkarakter, dan memiliki berkepribadian
+    <div v-if="isloaded">
+        <div class="font-bold text-2xl">
+            Tujuan
+        </div>
 
-
-PEO2 - Lulusan yang berkompeten, memahami tanggung jawab profesional dan mampu menjalankan etika seorang perekayasa multimedia serta menerapkan solusi teknologi untuk kebutuhan industri, dunia usaha dan dunia kerja (IDUKA)
-
-
-PEO3 - Lulusan siap belajar sepanjang hayat melalui studi lanjut dan berpartisipasi dalam penelitian pengembangan yang berinovasi dibidang teknologi rekayasa multimedia dan dipublikasikan sebagai referensi baik secara lokal, nasional, maupun internasional
-
-
-PEO4 - Lulusan mampu mengembangkan metode dan kajian-kajian di bidang teknologi rekayasa multimedia yang bermanfaat bagi masyarakat
-
-
-PEO5 - Lulusan yang berkualitas dengan meningkatkan mutu program studi melalui jalinan kerjasama dengan berbagai pihak baik di tingkat nasional maupun internasional
-
-
-PEO6 - Lulusan mampu bekerja secara mandiri, bekerja dalam tim dan untuk menciptakan wirausahawan dibidang rekayasa multimedia (Technopreneur)
-
-        </textarea>
+        <QuillEditor v-model:content="form.isi" :options="editorOption" toolbar="#my-toolbar" ref="myQuillEditor" >
+            <!-- <QuillEditor v-model:content="content" theme="snow" toolbar="#custom-toolbar"> -->
+            <template #toolbar >
+                <div id="my-toolbar">
+                    
+                    <!-- But you can also add your own -->
+                </div>
+            </template>
+        </QuillEditor>
     </div>
 </template>
+
+<script>
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import {reactive,toRefs,onMounted} from 'vue'
+import axios from 'axios'
+export default {
+    components: {
+        QuillEditor
+    },
+    setup(){
+
+        const data = reactive({
+            isloaded : false,
+            form :{
+                // isi :{"ops":[{"insert":"Lorem ipsum dolor sit amet"},{"attributes":{"header":3},"insert":"\n"},{"insert":"consectetur adipiscing elit. "},{"attributes":{"bold":true},"insert":"Nunc ultrices ligula"},{"insert":" eu eros pulvinar, eu consequat nulla consectetur. Cras ut purus felis. Nunc placerat risus a augue sodales, at ultricies diam tristique. Donec venenatis auctor mauris,"},{"attributes":{"italic":true},"insert":" at molestie enim euismo"},{"insert":"d ac. Mauris viverra, leo id porttitor maximus, diam magna blandit nibh, ac vehicula nulla diam in eros. Nullam mi risus, blandit a elit quis, aliquam porttitor diam. In mauris nunc, fringilla at auctor in, sodales eu diam. In convallis gravida urna, ut gravida massa euismod quis.\nProin rutrum tortor at augue eleifend finibus. "},{"attributes":{"underline":true},"insert":"Quisque non tincidunt dolor."},{"insert":" Aenean ullamcorper, diam ac vehicula imperdiet, arcu erat sodales sem, vitae lobortis dolor urna dapibus nisi. Nulla lacus urna, vehicula quis rutrum sit amet, "},{"attributes":{"link":"http://localhost"},"insert":"porttitor eget ligula"},{"insert":". Nam eget ante ornare, egestas nulla dapibus, tempus nisi. Sed vel odio augue. Fusce vulputate, risus sit amet venenatis tristique, ex ex pulvinar orci, vitae lobortis massa enim ac ante. Nulla sodales mauris ligula, a tempus felis vulputate ut. Sed scelerisque dolor at leo hendrerit vehicula.\n"}]},
+                isi : null
+            },
+            editorOption: {
+                // debug: 'info',
+                placeholder: 'Type your post...',
+                readOnly: true,
+                theme: 'snow',
+                modules: {
+                    table: true
+                }
+            },
+            categories : null
+            
+        })
+
+        const getContent=async(id) =>{
+            const hasil = await axios.get(`contents/categories/${id}`)
+            return hasil.data.data
+        }
+
+        const getData = async ()=>{
+            const resGetContent = await getContent(3)
+            
+            data.form.isi = JSON.parse(resGetContent.isi)
+
+            console.log(data.form.isi)
+        }
+        
+        
+        onMounted(async () => {
+            await getData()
+            data.isloaded=true
+            
+        })  
+        return {...toRefs(data)}
+    }
+}
+</script>

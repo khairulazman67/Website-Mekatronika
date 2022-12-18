@@ -29,12 +29,12 @@
                                 <label
                                     class="block text-gray-700 text-lg font-bold mb-2 xs:text-base"
                                     for="password">
-                                    Keterangan :
+                                    url :
                                 </label>
                                 <input
                                     class="shadow h-12 text-xs rounded-2xl appearance-none border w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
-                                    type="text" v-model="keterangan" name="keterangan"
-                                    placeholder="Keterangan">
+                                    type="text" v-model="url" name="url"
+                                    placeholder="url">
                             </div>
 
                             <div class="flex flex-row justify-end">
@@ -94,12 +94,12 @@
                                                     <label
                                                         class="block text-gray-700 text-lg font-bold mb-2 xs:text-base"
                                                         for="password">
-                                                        Keterangan :
+                                                        url :
                                                     </label>
                                                     <input
                                                         class="shadow h-12 text-xs rounded-2xl appearance-none border w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
-                                                        type="text" v-model="keterangan" name="keterangan"
-                                                        placeholder="Keterangan">
+                                                        type="text" v-model="url" name="url"
+                                                        placeholder="url">
                                                 </div>
 
                                                 <div class="flex flex-row justify-end">
@@ -130,7 +130,7 @@
                                                                     judul
                                                                 </th>
                                                                 <th scope="col" class="py-3 px-6">
-                                                                    Keterangan
+                                                                    url
                                                                 </th>
                                                                 <th scope="col" class="py-3 px-6">
                                                                     Aksi
@@ -138,7 +138,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr v-for="(v,i) in datajudul" :key="i"
+                                                            <tr v-for="(v,i) in dataSurvei" :key="i"
                                                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                                 <th scope="row"
                                                                     class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -148,11 +148,11 @@
                                                                     {{v.judul}}
                                                                 </td>
                                                                 <td class="py-4 px-6">
-                                                                    {{v.keterangan}}
+                                                                    {{v.url}}
                                                                 </td>
                                                                 <td class="py-4 px-6">
                                                                     <div class="flex flex-row justify-center">
-                                                                        <button type="submit" @click="editData(v.judul, v.keterangan, v.id)" 
+                                                                        <button type="submit" @click="editData(v.judul, v.url, v.id)" 
                                                                             class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-1 px-5 rounded-xl ml-2"><i
                                                                                 class="fa-solid fa-pen-to-square"></i></button>
 
@@ -198,14 +198,14 @@
                 isOpen: false
             });
             const data = reactive({
-                datajudul: [],
+                dataSurvei: [],
             })
             //get data judul
             const getCategoriesData = async () => {
-                await axios.get(`categories`)
+                await axios.get(`surveys`)
                     .then(r => {
-                        data.datajudul = r.data.data;
-                        console.log(data.datajudul);
+                        data.dataSurvei = r.data.data;
+                        console.log(data.dataSurvei);
                     })
                     .catch(e => {
                         console.dir(e);
@@ -223,14 +223,14 @@
             //form judul
             const form = reactive({
                 judul: '',
-                keterangan: '',
+                url: '',
                 id :null
             })
 
             const addOrUpdate = (flag) => {
                 const data = {
                     'judul': form.judul,
-                    'keterangan': form.keterangan
+                    'url': form.url
                 }
                 console.log('data', data)
                 if(flag==1){
@@ -245,7 +245,7 @@
                                 )
                                 getCategoriesData()
                                 form.judul = null
-                                form.keterangan = null
+                                form.url = null
                             }
                         })
                         .catch(e => {
@@ -258,7 +258,7 @@
                         });
                 }else{
                     axios
-                        .put(`categories/${form.id}`, data)
+                        .put(`surveys/${form.id}`, data)
                         .then(r => {
                             if (r.data.status === 'success') {
                                 Swal.fire(
@@ -268,7 +268,7 @@
                                 )
                                 getCategoriesData()
                                 form.judul = null
-                                form.keterangan = null
+                                form.url = null
                             }
                         })
                         .catch(e => {
@@ -291,14 +291,14 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios
-                            .delete(`categories/${id}`)
+                            .delete(`surveys/${id}`)
                             .then(r => {
                                 console.log(r)
                                 if (r.data.status === 'success') {
                                     console.log(r)
                                     Swal.fire(
                                         'Berhasil!',
-                                        'Data ketegori berhasil disimpan!',
+                                        'Data survei dihapus',
                                         'success'
                                     )
                                     getCategoriesData()
@@ -318,9 +318,9 @@
                 })
             }
 
-            const editData = (judul, keterangan,id) =>{
+            const editData = (judul, url,id) =>{
                 form.judul = judul
-                form.keterangan = keterangan
+                form.url = url
                 form.id = id
                 toggle.isOpen = true
             }
