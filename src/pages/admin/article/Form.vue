@@ -198,8 +198,6 @@ export default {
             data.form.kategori_id = await resGetContent.kategori_id
             data.form.ringkasan = await resGetContent.ringkasan
             data.form.foto = await resGetContent.foto? resGetContent.foto:null
-
-
             console.log('data form',data.form)
         }
         

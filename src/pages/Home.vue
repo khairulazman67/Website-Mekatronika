@@ -296,7 +296,7 @@
 
       myImageSource(data){
         console.log('data',data);
-        return data!=='localhost:3000/null' ? `http://`+data : '/Images/Home/pnl4.png';
+        return data!=='localhost:3000/null' ? `http://`+data : '/Images/pnl4.png';
       },
       async setPagination(page){
           if(page=='+'){
