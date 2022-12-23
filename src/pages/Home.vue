@@ -196,64 +196,34 @@
             </div>
           </div>
           <div class="w-1/2 rounded-xl h-full flex flex-col gap-5">
-            <div class=" shadow-lg py-6 text-primary-800 rounded-xl font-bold text-center text-xl bg-white">PENGUMUMAN
-              KEDUA</div>
+            <div class=" shadow-lg py-6 text-primary-800 rounded-xl font-bold text-center text-xl bg-white">PENGUMUMAN</div>
             <div class="h-2 w-full rounded-xl bg-primary-800 "></div>
             <div class="bg-gray-200 p-5 rounded-xl">
-              <div class="flex my-5 flex-row shadow-lg rounded-xl bg-white">
+              <div  v-for="(v,i) in data2" :key="i" class="flex my-5 flex-row shadow-lg rounded-xl bg-white">
                 <div class="w-2/5">
-                  <img src="../assets/Images/Home/pnl4.png" class="w-full h-full rounded-l-xl" alt="">
+                  <img :src="myImageSource(v.foto)" class="w-full h-full rounded-l-xl" alt="">
                 </div>
                 <div class="w-3/5 flex flex-col p-6">
-                  <p class="font-black text-xl mb-2">Lorem Ibsum</p>
-                  <p class="text-justify">Nostrud esse veniam consectetur cillum commodo. Ullamco ex elit dolor commodo
-                    ullamco irure eu magna. Laborum dolor do velit nulla. Qui do aute elit pariatur pariatur aute elit
-                    duis ut. Est dolore deserunt irure amet deserunt fugiat ex consectetur qui esse commodo cupidatat
-                    cillum incididunt. Veniam tempor qui nulla irure ullamco laborum.</p>
-                </div>
-              </div>
-
-              <div class="flex my-5 flex-row shadow-lg rounded-xl bg-white">
-                <div class="w-2/5">
-                  <img src="../assets/Images/Home/pnl4.png" class="w-full h-full rounded-l-xl" alt="">
-                </div>
-                <div class="w-3/5 flex flex-col p-6">
-                  <p class="font-black text-xl mb-2">Lorem Ibsum</p>
-                  <p class="text-justify">Nostrud esse veniam consectetur cillum commodo. Ullamco ex elit dolor commodo
-                    ullamco irure eu magna. Laborum dolor do velit nulla. Qui do aute elit pariatur pariatur aute elit
-                    duis ut. Est dolore deserunt irure amet deserunt fugiat ex consectetur qui esse commodo cupidatat
-                    cillum incididunt. Veniam tempor qui nulla irure ullamco laborum.</p>
-                </div>
-              </div>
-
-              <div class="flex my-5 flex-row shadow-lg rounded-xl bg-white">
-                <div class="w-2/5">
-                  <img src="../assets/Images/Home/pnl4.png" class="w-full h-full rounded-l-xl" alt="">
-                </div>
-                <div class="w-3/5 flex flex-col p-6">
-                  <p class="font-black text-xl mb-2">Lorem Ibsum</p>
-                  <p class="text-justify">Nostrud esse veniam consectetur cillum commodo. Ullamco ex elit dolor commodo
-                    ullamco irure eu magna. Laborum dolor do velit nulla. Qui do aute elit pariatur pariatur aute elit
-                    duis ut. Est dolore deserunt irure amet deserunt fugiat ex consectetur qui esse commodo cupidatat
-                    cillum incididunt. Veniam tempor qui nulla irure ullamco laborum.</p>
+                  <p class="font-black text-xl mb-2">{{v.judul}}</p>
+                  <p class="text-justify">{{v.ringkasan}}</p>
                 </div>
               </div>
               <nav class="mt-5 flex justify-center">
                   <ul class="inline-flex -space-x-px">
                       <li>
-                          <a  @click="setPagination(0)" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angles-left"></i></a>
+                          <a  @click="setPagination2(0)" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angles-left"></i></a>
                       </li>
                       <li>
-                          <a   @click="setPagination('-')" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angle-left"></i> </a>
+                          <a   @click="setPagination2('-')" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angle-left"></i> </a>
                       </li>
-                      <li v-for="(v,i) in pagination.page" :key="i">
-                          <a  @click="setPagination(i)"  class="px-3 py-2  text-primary-800 border border-gray-300 bg-red-50 hover:bg-red-100 hover:text-primary-700">dsa</a>
-                      </li>
-                      <li>
-                          <a  @click="setPagination('+')" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angle-right"></i></a>
+                      <li v-for="(v,i) in pagination2.page" :key="i">
+                          <a  @click="setPagination2(i)"  class="px-3 py-2  text-primary-800 border border-gray-300 bg-red-50 hover:bg-red-100 hover:text-primary-700">{{i+1}}</a>
                       </li>
                       <li>
-                          <a  @click="setPagination(pagination.page-1)" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angles-right"></i></a>
+                          <a  @click="setPagination2('+')" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angle-right"></i></a>
+                      </li>
+                      <li>
+                          <a  @click="setPagination2(pagination.page-1)" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angles-right"></i></a>
                       </li>
                   </ul>
               </nav>
@@ -282,7 +252,15 @@
             limit : 4,
             offset : 0
         },
-        data :null
+        pagination2 :{
+            total : null,
+            page :1,
+            pageNow : 0,
+            limit : 3,
+            offset : 0
+        },
+        data :null,
+        data2:null
       }
     },
     components: {
@@ -313,14 +291,43 @@
           this.getData('',await this.pagination.offset)
       },
 
+      async setPagination2(page){
+          if(page=='+'){
+              if(this.pagination2.pageNow<this.pagination2.page-1)
+                  this.pagination2.pageNow = this.pagination2.pageNow+1
+          }else if(page=='-' ){
+              if(this.pagination2.pageNow-1>=0)
+                  this.pagination2.pageNow = this.pagination2.pageNow-1
+          }else{
+              this.pagination2.pageNow = await page
+          }
+          this.pagination2.offset=await this.pagination2.pageNow*this.pagination2.limit
+          
+          this.getData('',await this.pagination.offset)
+      },
+
       async getData() {
         await axios
             .get(`contents/`, {params:{offset:this.pagination.offset,limit:this.pagination.limit,kategori:1}})
             .then(r => {
-                console.log(r.data.da)
                 this.data = r.data.data
                 this.pagination.total = r.data.total
                 this.pagination.page = Math.ceil(this.pagination.total/this.pagination.limit)
+                console.log('pagination 1 page ',this.pagination.total)
+            }).catch(e => {
+                console.dir(e);
+            });
+      },
+
+      async getData2() {
+        await axios
+            .get(`contents/`, {params:{offset:this.pagination2.offset,limit:this.pagination2.limit,kategori:7}})
+            .then(r => {
+                console.log('data 2 bro',r.data.data)
+                this.data2 = r.data.data
+                this.pagination2.total = r.data.total
+                this.pagination2.page = Math.ceil(this.pagination2.total/this.pagination2.limit)
+                console.log('pagination 2 page ',this.pagination2.total)
             }).catch(e => {
                 console.dir(e);
             });
@@ -328,6 +335,7 @@
     },
     async mounted() {
       await this.getData()
+      await this.getData2()
       this.isloaded=true
       console.log(this.data[0])
     }
