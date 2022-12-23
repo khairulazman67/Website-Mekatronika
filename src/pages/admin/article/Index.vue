@@ -121,7 +121,7 @@
                                                             <a href="#" @click="setPagination('-')" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angle-left"></i> </a>
                                                         </li>
                                                         <li  v-for="(v,i) in pagination.page" :key="i">
-                                                            <a href="#" @click="setPagination(i)"  class="px-3 py-2  " :class="[pagination.pageNow ==i? 'text-primary-800 border border-gray-300 bg-red-50 hover:bg-red-100 hover:text-primary-700' : 'leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700']">{{i+1}}</a>
+                                                            <a href="#" @click="setPagination(i)"  class="px-3 py-2" :class="[pagination.pageNow ==i? 'text-primary-800 border border-gray-300 bg-red-50 hover:bg-red-100 hover:text-primary-700' : 'leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700']">{{i+1}}</a>
                                                         </li>
                                                         <li>
                                                             <a href="#" @click="setPagination('+')" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-angle-right"></i></a>
@@ -131,7 +131,6 @@
                                                         </li>
                                                     </ul>
                                                 </nav>
-
                                             </div>
                                         </div>
                                     </div>
@@ -199,6 +198,7 @@
                     this.pagination.pageNow = await page
                 }
                 this.pagination.offset=await this.pagination.pageNow*this.pagination.limit
+                
                 this.getData('',await this.pagination.offset)
             },
 

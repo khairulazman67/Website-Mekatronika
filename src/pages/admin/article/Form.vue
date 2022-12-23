@@ -43,7 +43,7 @@
                                                     type="file" @change="updateFoto" name="kategori"
                                                     placeholder="Kategori">
                                                 
-                                                <img v-if="form.foto!==null" :src="`http://`+form.foto" class="w-1/2 mt-2">
+                                                <img v-if="form.foto!=='localhost:3000/null'" :src="`http://`+form.foto" class="w-1/2 mt-2">
                                             </div>
                                             <label class="block text-gray-700 text-lg font-bold mb-2 xs:text-base">Kategori</label>
                                             <select id="countries" v-model="form.kategori_id" class=" mb-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
@@ -153,11 +153,11 @@ export default {
             isloaded : false,
             form :{
                 foto2 : "../../../assets/Images/Home/card_red.png",
-                judul :"tes",
+                judul :"",
                 kategori_id : 1,
                 // isi :{"ops":[{"insert":"Lorem ipsum dolor sit amet"},{"attributes":{"header":3},"insert":"\n"},{"insert":"consectetur adipiscing elit. "},{"attributes":{"bold":true},"insert":"Nunc ultrices ligula"},{"insert":" eu eros pulvinar, eu consequat nulla consectetur. Cras ut purus felis. Nunc placerat risus a augue sodales, at ultricies diam tristique. Donec venenatis auctor mauris,"},{"attributes":{"italic":true},"insert":" at molestie enim euismo"},{"insert":"d ac. Mauris viverra, leo id porttitor maximus, diam magna blandit nibh, ac vehicula nulla diam in eros. Nullam mi risus, blandit a elit quis, aliquam porttitor diam. In mauris nunc, fringilla at auctor in, sodales eu diam. In convallis gravida urna, ut gravida massa euismod quis.\nProin rutrum tortor at augue eleifend finibus. "},{"attributes":{"underline":true},"insert":"Quisque non tincidunt dolor."},{"insert":" Aenean ullamcorper, diam ac vehicula imperdiet, arcu erat sodales sem, vitae lobortis dolor urna dapibus nisi. Nulla lacus urna, vehicula quis rutrum sit amet, "},{"attributes":{"link":"http://localhost"},"insert":"porttitor eget ligula"},{"insert":". Nam eget ante ornare, egestas nulla dapibus, tempus nisi. Sed vel odio augue. Fusce vulputate, risus sit amet venenatis tristique, ex ex pulvinar orci, vitae lobortis massa enim ac ante. Nulla sodales mauris ligula, a tempus felis vulputate ut. Sed scelerisque dolor at leo hendrerit vehicula.\n"}]},
                 isi : '',
-                ringkasan :"tes",
+                ringkasan :"",
                 foto :null
             },
             editorOption: {
@@ -197,8 +197,10 @@ export default {
             data.form.isi = await JSON.parse(resGetContent.isi)
             data.form.kategori_id = await resGetContent.kategori_id
             data.form.ringkasan = await resGetContent.ringkasan
-            data.form.foto = await resGetContent.foto
-            console.log(data.form.isi)
+            data.form.foto = await resGetContent.foto? resGetContent.foto:null
+
+
+            console.log('data form',data.form)
         }
         
         onMounted(async () => {
@@ -212,7 +214,6 @@ export default {
         })
 
         const updateFoto = async(e)=>{
-            
             let file = await e.target.files[0];
             console.log(file)
             let reader = new FileReader();
@@ -220,8 +221,7 @@ export default {
                 console.log('RESULT' ,reader.result)
                 data.form.foto = reader.result
             }
-            const tes = reader.readAsDataURL(file)
-            console.log('ini tes', tes)
+            reader.readAsDataURL(file)
         }
 
     // proses create
@@ -234,7 +234,7 @@ export default {
                 'ringkasan' :  await data.form.ringkasan,
                 'foto' : await data.form.foto,
             }
-            console.log(dataSave)
+            
             const input = await axios
                 .post(`contents`, dataSave)
                 .then(r => {
@@ -263,7 +263,6 @@ export default {
         }
 
         const updateContent = async()=>{
-            
             const dataSave = {
                 'judul': await data.form.judul,
                 'isi': `${JSON.stringify(await data.form.isi)}`,
@@ -271,7 +270,7 @@ export default {
                 'ringkasan' :  await data.form.ringkasan,
                 'foto' : await data.form.foto,
             }
-            console.log(dataSave)
+            console.log('data save',dataSave)
             const input = await axios
                 .put(`contents/${props.id}`, dataSave)
                 .then(r => {
