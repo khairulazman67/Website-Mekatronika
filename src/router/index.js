@@ -8,6 +8,7 @@ import FormPosting from '../pages/admin/article/Form';
 import DataPosting from '../pages/admin/article/Index';
 import Kategori from '../pages/admin/Kategori';
 import Survei from '../pages/admin/Survei'
+import ContentDetail from '../pages/ContentDetail'
 
 
 const router = createRouter({
@@ -59,7 +60,21 @@ const router = createRouter({
             path: '/survei',
             name: 'survei',
             component: Survei,
+        },
+        // Content
+        {
+            path: '/contentcat/:title/:kategori',
+            name: 'contentcat',
+            props:true,
+            component: ContentDetail,
+        },
+        {
+            path: '/contentdetail/:title/:id',
+            name: 'contentdetail',
+            props:true,
+            component: ContentDetail,
         }
+
     ]
 })
 export default router;
