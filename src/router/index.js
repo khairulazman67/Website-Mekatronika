@@ -9,6 +9,8 @@ import DataPosting from '../pages/admin/article/Index';
 import Kategori from '../pages/admin/Kategori';
 import Survei from '../pages/admin/Survei'
 import ContentDetail from '../pages/ContentDetail'
+import DosenDetail from '../pages/DosenDetail'
+import Kontak from '../pages/Kontak'
 
 
 const router = createRouter({
@@ -73,6 +75,17 @@ const router = createRouter({
             name: 'contentdetail',
             props:true,
             component: ContentDetail,
+        },
+        {
+            path: '/lecturedetail/:title/:id',
+            name: 'lecturedetail',
+            props:true,
+            component: DosenDetail,
+        },
+        {
+            path: '/kontak',
+            name: 'kontak',
+            component: Kontak,
         }
 
     ]
