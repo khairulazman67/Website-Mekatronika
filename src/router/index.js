@@ -4,13 +4,21 @@ import Dokumen from '../pages/Dokumen';
 import Profil from '../pages/Profil';
 import Login from '../pages/Login';
 import DashboardAdmin from '../pages/admin/Dashboard';
-import FormPosting from '../pages/admin/article/Form';
+
 import DataPosting from '../pages/admin/article/Index';
+import FormPosting from '../pages/admin/article/Form';
+
+import FormDosen from '../pages/admin/dosen/Form';
+import DataDosen from '../pages/admin/dosen/Index';
+
+
 import Kategori from '../pages/admin/Kategori';
 import Survei from '../pages/admin/Survei'
 import ContentDetail from '../pages/ContentDetail'
 import DosenDetail from '../pages/DosenDetail'
 import Kontak from '../pages/Kontak'
+import Civitas from '../pages/Civitas'
+import Berita from '../pages/Berita'
 
 
 const router = createRouter({
@@ -86,8 +94,30 @@ const router = createRouter({
             path: '/kontak',
             name: 'kontak',
             component: Kontak,
-        }
-
+        },
+        {
+            path: '/civitas',
+            name: 'civitas',
+            component: Civitas,
+        },
+        {
+            path : '/berita/:title/:kategori',
+            props:true,
+            name : 'berita',
+            component : Berita
+        },
+        {
+            path : '/datadosen',
+            props:true,
+            name : 'datadosen',
+            component : DataDosen
+        },
+        {
+            path: '/formdosen/:id',
+            name: 'formdosen',
+            props:true,
+            component: FormDosen,
+        },
     ]
 })
 export default router;

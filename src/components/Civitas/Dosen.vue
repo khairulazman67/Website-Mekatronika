@@ -102,7 +102,6 @@
                     }).catch(e => {
                         console.dir(e);
                     });
-                console.log('data dokter bto', this.data);
             },
 
             async setPagination(page) {

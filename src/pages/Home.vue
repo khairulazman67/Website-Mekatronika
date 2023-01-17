@@ -15,12 +15,6 @@
           </div>
 
           <div class="absolute flex flex-row gap-7 justify-center -bottom-32">
-            <!-- <div class="relative">
-              <img src="../assets/Images/Home/card_red.png" alt="">
-              <div class="absolute text-2xl flex flex-col justify-center items-center">
-                dsakjd,nas
-              </div>
-            </div> -->
             <div class="relative flex justify-center items-center ">
               <img src="../assets/Images/Home/card_red.png" class="w-full rounded-xl" alt="">
               <div
@@ -71,7 +65,7 @@
             <div class="mt-5 text-xl">
               {{form.ringkasan}}
             </div>
-              <router-link :to="{name: 'contentcat', params:{title:'sejarah',kategori:'9'}}">
+              <router-link :to="{name: 'contentcat', params:{title:'sejarah',kategori:'3'}}">
                 <div class="flex flex-col ">
                   <div
                     class="py-3 px-4 mt-4 w-44 text-center rounded-2xl font-semibold text-white bg-yellow-900 hover:text-black hover:bg-yellow-800">
@@ -299,8 +293,9 @@
       },
       
       async getDataSejarah() {
-        const resGetContent = await this.getContent(0, 1, 9)
-        this.form.ringkasan = resGetContent[0].ringkasan
+        const resGetContent = await this.getContent(0, 1, 3)
+        
+          this.form.ringkasan = resGetContent[0]?resGetContent[0].ringkasan:null
         console.log('data', this.form.ringkasan)
       },
 
@@ -364,7 +359,7 @@
             params: {
               offset: this.pagination2.offset,
               limit: this.pagination2.limit,
-              kategori: 7
+              kategori: 2
             }
           })
           .then(r => {

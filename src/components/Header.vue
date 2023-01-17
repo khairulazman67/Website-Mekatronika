@@ -40,11 +40,30 @@
                                 <i class="fa-solid dropdown-menu hidden fa-minus"></i>
                             </button>
                             <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full  ">
-                                <li class=""><a
-                                        class="rounded-t bg-white text-xs font-bold  hover:bg-yellow-800 py-2 px-4 block whitespace-no-wrap"
-                                        href="#">Survei Prodi</a></li>
+                                <router-link :to="{name: 'berita', params:{kategori:'1' , title:'Berita'}}">
+                                    <a class="bg-white text-xs font-bold hover:bg-yellow-800 py-2 px-4 block whitespace-no-wrap"
+                                    href="#">Berita</a>
+                                </router-link>
+                                <router-link :to="{name:'berita', params:{kategori:'2', title:'Pengumuman'}}">
+                                    <a class="bg-white text-xs font-bold hover:bg-yellow-800 py-2 px-4 block whitespace-no-wrap"
+                                    href="#">Pengumuman</a>
+                                </router-link>
+                            </ul>
+                        </div>
+                        <div class="dropdown px-2 inline-block relative">
+                            <button
+                                class=" text-white font-extrabold py-2 px-4 rounded hover:text-yellow-700 inline-flex items-center uppercase">
+                                <span class="mr-1">Akademik </span>
+                                <i class="fa-solid dropdown-plus  fa-plus"></i>
+                                <i class="fa-solid dropdown-menu hidden fa-minus"></i>
+                            </button>
+                            <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full  ">
+                                <router-link :to="{name:'civitas', params:{}}">
+                                    <a class="bg-white text-xs font-bold hover:bg-yellow-800 py-2 px-4 block whitespace-no-wrap"
+                                    href="#">Civitas</a>
+                                </router-link>
                                 <li class=""><a class="bg-white text-xs font-bold hover:bg-yellow-800 py-2 px-4 block whitespace-no-wrap"
-                                        href="#">Hasil Survei</a></li>
+                                        href="#">Fasilitas</a></li>
                             </ul>
                         </div>
                         <a href="#responsive-header"
@@ -66,11 +85,10 @@
                                         href="#">Hasil Survei</a></li>
                             </ul>
                         </div>
-                        <a href="#responsive-header"
-                            class="no-underline px-2 font-extrabold block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-yellow-900">
+                        <router-link :to="{name:'kontak', params:{}}"
+                            class="no-underline px-2 font-extrabold  block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-yellow-700 mr-4">
                             Kontak
-                        </a>
-                        
+                        </router-link>
                     </div>
                 </div>
             </div>

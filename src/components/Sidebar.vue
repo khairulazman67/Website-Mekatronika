@@ -33,27 +33,30 @@
             </div>
         </router-link>
         <router-link :to="{name: 'survei', params:{}}" class="mt-4">
-        <div class="mt-4">
-            <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
-                <div
-                    class="flex items-center justify-center h-16 w-16 xs:w-10 xs:h-10 xs:rounded-xl rounded-2xl bg-white hover:bg-secondary-900">
-                    <i class="fa-solid fa-book text-xl"></i>
+            <div class="mt-4">
+                <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
+                    <div
+                        class="flex items-center justify-center h-16 w-16 xs:w-10 xs:h-10 xs:rounded-xl rounded-2xl bg-white hover:bg-secondary-900">
+                        <i class="fa-solid fa-book text-xl"></i>
+                    </div>
+                    <div class="text-white text-base xs:text-xs mt-1">Survei</div>
                 </div>
-                <div class="text-white text-base xs:text-xs mt-1">Survei</div>
             </div>
-        </div>
-         </router-link>
-         
-        <div class="mt-4">
-            <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
-                <div
-                    class="flex items-center justify-center h-16 w-16 xs:w-10 xs:h-10 xs:rounded-xl rounded-2xl bg-white hover:bg-secondary-900">
-                    <i class="fa-solid fa-book text-xl"></i>
+        </router-link>
+
+
+        <router-link :to="{name: 'datadosen', params:{}}">
+            <div class="mt-4">
+                <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
+                    <div
+                        class="flex items-center justify-center h-16 w-16 xs:w-10 xs:h-10 xs:rounded-xl rounded-2xl bg-white hover:bg-secondary-900">
+                        <i class="fa-solid fa-book text-xl"></i>
+                    </div>
+                    <div class="text-white text-base xs:text-xs mt-1">Dosen</div>
                 </div>
-                <div class="text-white text-base xs:text-xs mt-1">Dosen</div>
             </div>
-        </div>
-        
+        </router-link>
+
         <div class="mt-4">
             <a href="#" class="mt-10" @click="signout">
                 <div class="flex flex-col items-center text-secondary-900 hover:text-white ">

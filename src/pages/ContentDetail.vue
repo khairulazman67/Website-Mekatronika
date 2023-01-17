@@ -9,7 +9,7 @@
                     <div class="absolute text-2xl mt-24 flex flex-col uppercase justify-center items-center text-white top-auto ">
                         <!-- <div class=""> -->
                         <div class="font-extrabold text-5xl ">{{props.title}}</div>
-                        <div class="font-extrabold text-1xl mt-3">
+                        <div class="font-extrabold text-1xl mt-3 uppercase">
                             <router-link :to="{name: 'home', params:{}}" class="hover:text-gray-300">
                                     BERANDA
                             </router-link>
