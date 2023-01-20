@@ -50,9 +50,21 @@
                 <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
                     <div
                         class="flex items-center justify-center h-16 w-16 xs:w-10 xs:h-10 xs:rounded-xl rounded-2xl bg-white hover:bg-secondary-900">
-                        <i class="fa-solid fa-book text-xl"></i>
+                        <i class="fa-solid fa-chalkboard-user text-xl"></i>
                     </div>
                     <div class="text-white text-base xs:text-xs mt-1">Dosen</div>
+                </div>
+            </div>
+        </router-link>
+
+        <router-link :to="{name: 'datamahasiswa', params:{}}">
+            <div class="mt-4">
+                <div class="flex flex-col items-center text-secondary-900 hover:text-white ">
+                    <div
+                        class="flex items-center justify-center h-16 w-16 xs:w-10 xs:h-10 xs:rounded-xl rounded-2xl bg-white hover:bg-secondary-900">
+                        <i class="fa-solid fa-user-graduate text-xl"></i>
+                    </div>
+                    <div class="text-white text-base xs:text-xs mt-1">Mahasiswa</div>
                 </div>
             </div>
         </router-link>

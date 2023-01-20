@@ -5,12 +5,13 @@ import Profil from '../pages/Profil';
 import Login from '../pages/Login';
 import DashboardAdmin from '../pages/admin/Dashboard';
 
+import DataMahasiswa from '../pages/admin/Mahasiswa';
+
 import DataPosting from '../pages/admin/article/Index';
 import FormPosting from '../pages/admin/article/Form';
 
 import FormDosen from '../pages/admin/dosen/Form';
 import DataDosen from '../pages/admin/dosen/Index';
-
 
 import Kategori from '../pages/admin/Kategori';
 import Survei from '../pages/admin/Survei'
@@ -118,6 +119,13 @@ const router = createRouter({
             props:true,
             component: FormDosen,
         },
+        {
+            path : '/datamahasiswa',
+            name: 'datamahasiswa',
+            props:true,
+            component: DataMahasiswa
+        }
+
     ]
 })
 export default router;

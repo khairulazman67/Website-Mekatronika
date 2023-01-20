@@ -142,7 +142,7 @@ export default {
             data.form.NIDN = resGetLecture.NIDN
             data.form.NIP = resGetLecture.NIP
             data.form.ringkasan = resGetLecture.ringkasan
-            data.form.foto = resGetLecture.foto
+            data.form.foto = resGetLecture.foto? resGetLecture.foto:null
             console.log('dataa',data.form)
         }
         

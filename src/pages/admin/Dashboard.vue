@@ -18,10 +18,10 @@
                     <div class="flex flex-col  w-full xs:w-full rounded-t-3xl">
                         <div class="flex flex-col">
                             <div>
-                                <div class="bg-primary-800 rounded-t-2xl px-10 text-center w-full text-white py-3 font-semibold text-2xl xs:text-lg">JADWAL PEMBERIAN PAKAN</div>
+                                <div class="bg-primary-800 rounded-t-2xl px-10 text-center w-full text-white py-3 font-semibold text-2xl xs:text-lg">DASHBOARD</div>
                                 <div class=" bg-white rounded-b-3xl shadow-lg py-2">
                                     <div class="bg-secondary-800 rounded-2xl  mx-5 my-5 px-5 py-5 xs:mx-3 xs:my-3 xs:py-3 gap-4">
-                                        <div class="w-full bg-primary-800 rounded-2xl py-3 px-7 text-white text-lg font-semibold xs:text-center">Form Pemberian Pakan</div>
+                                        <div class="w-full bg-primary-800 rounded-2xl py-3 px-7 text-white text-lg font-semibold xs:text-center">Form</div>
                                         
                                     </div>
                                 </div>
